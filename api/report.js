@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   try {
     const { nombre, comentario, latitud, longitud } = req.body;
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyWPhjg_ITeYscL2PGI_jaB1fTKepHdqDqFdR8moH1xlNjwQWWzwuG33RW-aZi3HiOn/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwNUM4jeuYqV4Pf3gjnoXjbH8iIEh6vzdGQlzJNdhoozbG6-tKpcK7JJZCR4G936poC/exec";
 
     const response = await fetch(scriptURL, {
       method: "POST",
