@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       longitud
     } = req.body;
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwqZeT3sVtCnttymAJQedgqr66Bq7WSwS95OrC6qiPcCGaXhR552mtvqjfsxkptG4eB/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyggBgvoz1ZqaC7CT4-bGdYaes3GkYyf1Z9ciMj4-g_kPndPvQigOb7CXsCqemhYukQ/exec";
 
     // ✅ Enviar todos los campos al Apps Script
     const response = await fetch(scriptURL, {
