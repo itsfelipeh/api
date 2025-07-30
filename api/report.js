@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       longitud
     } = req.body;
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbz6yqsLoq5MXV91FbaftnAC_SO_Nm4ztNFh_JyXKrPNUG_0rv-S67Vw8mh-zNvwBUsaXQ/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzn-G0I3rrLfnyoPZduf505fbgpigYdrkMERAI86HDpIJ8b0bu2lFmgvQmqKqEK8GFO2w/exec";
 
     const response = await fetch(scriptURL, {
       method: "POST",
