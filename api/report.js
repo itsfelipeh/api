@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
   try {
-    // ✅ Capturar todos los campos
+    // ✅ Capturar todos los campos ;)
     const {
       nombre,
       correo,
