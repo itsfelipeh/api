@@ -13,14 +13,38 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
   try {
-    const { nombre, comentario, latitud, longitud } = req.body;
+    // ✅ Capturar todos los campos
+    const {
+      nombre,
+      correo,
+      telefono,
+      calle,
+      numeracion,
+      poste,
+      tipo_problema,
+      comentario,
+      latitud,
+      longitud
+    } = req.body;
 
     const scriptURL = "https://script.google.com/macros/s/AKfycbxYdw9AIAf1RcvPwuPMJqQ65jiH94r2_iOXvGRwaI7-OqibTAMcsxqqnTUW0xOkEgUa/exec";
 
+    // ✅ Enviar todos los campos al Apps Script
     const response = await fetch(scriptURL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nombre, comentario, latitud, longitud })
+      body: JSON.stringify({
+        nombre,
+        correo,
+        telefono,
+        calle,
+        numeracion,
+        poste,
+        tipo_problema,
+        comentario,
+        latitud,
+        longitud
+      })
     });
 
     const result = await response.json();
