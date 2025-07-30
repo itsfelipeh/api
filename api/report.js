@@ -13,7 +13,6 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
   try {
-    // ✅ Capturar todos los campos ;)
     const {
       nombre,
       correo,
@@ -29,7 +28,6 @@ export default async function handler(req, res) {
 
     const scriptURL = "https://script.google.com/macros/s/AKfycbwdblfpPXqEbIWA0ZIiHe6nRadB6jt3wLWIv_iczsUQrd5MeztIVKInAyFBZcMI9LD_/exec";
 
-    // ✅ Enviar todos los campos al Apps Script
     const response = await fetch(scriptURL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -47,8 +45,20 @@ export default async function handler(req, res) {
       })
     });
 
-    const result = await response.json();
-    return res.status(200).json(result);
+    const text = await response.text();
+
+    try {
+      const json = JSON.parse(text);
+      return res.status(200).json(json);
+    } catch (e) {
+      console.error("No se pudo parsear JSON:", text);
+      return res.status(502).json({
+        status: "error",
+        message: "Respuesta inválida del servidor Apps Script",
+        raw: text
+      });
+    }
+
   } catch (err) {
     console.error("Error en el proxy:", err);
     return res.status(500).json({ status: "error", message: "Error interno en el proxy" });
